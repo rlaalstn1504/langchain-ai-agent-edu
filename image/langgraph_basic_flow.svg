@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="620" viewBox="0 0 940 620" role="img" aria-labelledby="title desc">
+  <title id="title">LangGraph state snapshots through nodes</title>
+  <desc id="desc">Shows state snapshots accumulating keys as they move through LangGraph nodes connected by edges.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#334155"/>
+    </marker>
+    <marker id="softArrow" markerWidth="11" markerHeight="11" refX="8" refY="5.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L9,5.5 L2,9 Z" fill="#64748b"/>
+    </marker>
+    <filter id="shadow" x="-12%" y="-16%" width="124%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 25px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+      .label { font-family: Arial, sans-serif; font-size: 16px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+      .small { font-family: Arial, sans-serif; font-size: 13px; fill: #475569; text-anchor: middle; }
+      .tiny { font-family: Arial, sans-serif; font-size: 12px; fill: #475569; text-anchor: middle; }
+      .stateLabel { font-family: Arial, sans-serif; font-size: 13px; font-weight: 700; fill: #1d4ed8; text-anchor: middle; }
+      .stateText { font-family: Arial, sans-serif; font-size: 11.5px; fill: #334155; text-anchor: middle; }
+      .note { font-family: Arial, sans-serif; font-size: 14px; fill: #334155; text-anchor: middle; }
+      .edge { stroke: #334155; stroke-width: 2.3; fill: none; marker-end: url(#arrow); }
+      .branch { stroke: #7c3aed; stroke-width: 2.3; fill: none; marker-end: url(#arrow); }
+      .stateMove { stroke: #2563eb; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .update { stroke: #64748b; stroke-width: 1.7; stroke-dasharray: 5 5; fill: none; marker-end: url(#softArrow); }
+      .labelBg { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <rect width="940" height="620" rx="18" fill="#f8fafc"/>
+  <text class="title" x="470" y="42">LangGraph 기본 개념: State가 누적되며 이동한다</text>
+
+  <rect x="66" y="70" width="808" height="58" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.6"/>
+  <text class="note" x="470" y="95">State는 별도 단계가 아니라 노드 사이를 지나가는 작업 데이터입니다.</text>
+  <text class="small" x="470" y="117">각 Node가 값을 일부 추가하거나 바꾸고, 그 State가 다음 Edge를 따라 이동합니다.</text>
+
+  <rect x="90" y="172" width="136" height="78" rx="18" fill="#dbeafe" stroke="#2563eb" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="stateLabel" x="158" y="193">State</text>
+  <text class="stateText" x="158" y="212">draft</text>
+  <text class="stateText" x="158" y="230">retry_count=0</text>
+
+  <rect x="316" y="164" width="142" height="94" rx="18" fill="#dbeafe" stroke="#2563eb" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="stateLabel" x="387" y="185">State</text>
+  <text class="stateText" x="387" y="204">draft</text>
+  <text class="stateText" x="387" y="222">retry_count=0</text>
+  <text class="stateText" x="387" y="240">next_step</text>
+
+  <rect x="550" y="164" width="142" height="94" rx="18" fill="#dbeafe" stroke="#2563eb" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="stateLabel" x="621" y="185">State</text>
+  <text class="stateText" x="621" y="204">draft(보완)</text>
+  <text class="stateText" x="621" y="222">retry_count=1</text>
+  <text class="stateText" x="621" y="240">next_step</text>
+
+  <rect x="770" y="164" width="132" height="94" rx="18" fill="#dbeafe" stroke="#2563eb" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="stateLabel" x="836" y="185">State</text>
+  <text class="stateText" x="836" y="204">draft(보완)</text>
+  <text class="stateText" x="836" y="222">retry_count=1</text>
+  <text class="stateText" x="836" y="240">final_text</text>
+
+  <path class="stateMove" d="M226 211 H306"/>
+  <path class="stateMove" d="M458 211 H540"/>
+  <path class="stateMove" d="M692 211 H760"/>
+  <text class="tiny" x="266" y="155">State 이동</text>
+  <text class="tiny" x="499" y="155">갱신 후 이동</text>
+  <text class="tiny" x="726" y="155">갱신 후 이동</text>
+
+  <circle cx="78" cy="390" r="28" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+  <text class="label" x="78" y="396">START</text>
+
+  <rect x="174" y="348" width="158" height="84" rx="12" fill="#ecfdf5" stroke="#059669" stroke-width="2" filter="url(#shadow)"/>
+  <text class="label" x="253" y="378">Node</text>
+  <text class="small" x="253" y="401">review_notice</text>
+  <text class="tiny" x="253" y="419">초안 검토</text>
+
+  <rect x="414" y="500" width="158" height="84" rx="12" fill="#fdf2f8" stroke="#db2777" stroke-width="2" filter="url(#shadow)"/>
+  <text class="label" x="493" y="530">Node</text>
+  <text class="small" x="493" y="553">revise_notice</text>
+  <text class="tiny" x="493" y="571">초안 보완</text>
+
+  <rect x="654" y="348" width="158" height="84" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2" filter="url(#shadow)"/>
+  <text class="label" x="733" y="378">Node</text>
+  <text class="small" x="733" y="401">finalize_notice</text>
+  <text class="tiny" x="733" y="419">최종 문장 생성</text>
+
+  <circle cx="876" cy="390" r="28" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+  <text class="label" x="876" y="396">END</text>
+
+  <path class="edge" d="M106 390 H164"/>
+  <path class="edge" d="M332 390 H644"/>
+  <rect class="labelBg" x="413" y="361" width="150" height="22" rx="8"/>
+  <text class="tiny" x="488" y="376">Edge: 충분하면 최종화</text>
+  <path class="edge" d="M812 390 H838"/>
+
+  <path class="branch" d="M253 432 C270 496 346 542 404 542"/>
+  <rect class="labelBg" x="178" y="456" width="212" height="22" rx="8"/>
+  <text class="tiny" x="284" y="472">조건 Edge: 초안이 짧으면 보완</text>
+
+  <path class="branch" d="M493 500 C474 462 340 456 266 434"/>
+  <rect class="labelBg" x="460" y="454" width="140" height="22" rx="8"/>
+  <text class="tiny" x="530" y="470">보완 후 다시 검토</text>
+
+  <path class="update" d="M253 348 C266 302 322 268 387 258"/>
+  <path class="update" d="M493 500 C530 406 574 302 621 258"/>
+  <path class="update" d="M733 348 C752 304 792 266 836 258"/>
+
+  <rect x="82" y="594" width="776" height="1.5" fill="#cbd5e1"/>
+  <text class="note" x="470" y="612">정리: State는 노드를 거치며 키와 값이 누적되고, Edge는 그 State가 다음 노드로 가는 경로를 정한다.</text>
+</svg>

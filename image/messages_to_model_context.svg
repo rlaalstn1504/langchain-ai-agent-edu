@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="500" viewBox="0 0 960 500" role="img" aria-labelledby="title desc">
+  <title id="title">messages 묶음이 모델에 전달되는 구조</title>
+  <desc id="desc">시스템 프롬프트, 사용자 메시지, 이전 AI 메시지가 하나의 messages 묶음으로 합쳐져 모델 입력으로 전달되는 과정을 보여준다. 시스템 프롬프트는 절대 규칙으로 강조되어 있다.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,8 L11,4 z" fill="#2563eb" />
+    </marker>
+    <marker id="arrow-red" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,8 L11,4 z" fill="#dc2626" />
+    </marker>
+    <style>
+      .title { font: 700 26px sans-serif; fill: #111827; }
+      .subtitle { font: 500 15px sans-serif; fill: #4b5563; }
+      .label { font: 700 18px sans-serif; fill: #111827; }
+      .body { font: 500 14px sans-serif; fill: #374151; }
+      .small { font: 600 13px sans-serif; fill: #4b5563; }
+      .mono { font: 700 15px monospace; fill: #1f2937; }
+      .system-box { fill: #fff1f2; stroke: #dc2626; stroke-width: 3; rx: 12; }
+      .system-band { fill: #dc2626; rx: 10; }
+      .user-box { fill: #eff6ff; stroke: #60a5fa; stroke-width: 2; rx: 12; }
+      .ai-box { fill: #f0fdf4; stroke: #22c55e; stroke-width: 2; rx: 12; }
+      .context-box { fill: #ffffff; stroke: #94a3b8; stroke-width: 2.5; rx: 14; }
+      .model-box { fill: #f8fafc; stroke: #475569; stroke-width: 2.5; rx: 16; }
+      .chip-red { fill: #fee2e2; stroke: #ef4444; stroke-width: 1.5; rx: 10; }
+      .chip-blue { fill: #dbeafe; stroke: #60a5fa; stroke-width: 1.5; rx: 10; }
+      .chip-green { fill: #dcfce7; stroke: #22c55e; stroke-width: 1.5; rx: 10; }
+      .arrow { stroke: #2563eb; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .arrow-red { stroke: #dc2626; stroke-width: 3.5; fill: none; marker-end: url(#arrow-red); }
+      .note { font: 600 14px sans-serif; fill: #334155; }
+    </style>
+  </defs>
+
+  <rect width="960" height="500" fill="#ffffff" />
+  <text x="480" y="42" text-anchor="middle" class="title">모델은 여러 메시지를 하나의 입력 묶음으로 봅니다</text>
+  <text x="480" y="70" text-anchor="middle" class="subtitle">시스템 프롬프트, 사용자 요청, 이전 AI 응답이 messages 배열 안에서 함께 전달됩니다.</text>
+
+  <text x="185" y="112" text-anchor="middle" class="label">대화 메시지</text>
+
+  <rect x="55" y="130" width="260" height="88" class="system-box" />
+  <rect x="73" y="146" width="78" height="26" class="system-band" />
+  <text x="112" y="164" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffffff">절대 규칙</text>
+  <text x="226" y="164" text-anchor="middle" class="label">System Prompt</text>
+  <text x="185" y="190" text-anchor="middle" class="body">역할, 금지사항, 응답 기준</text>
+  <text x="185" y="209" text-anchor="middle" class="small">사용자 요청보다 먼저 적용</text>
+
+  <rect x="55" y="242" width="260" height="76" class="user-box" />
+  <text x="185" y="270" text-anchor="middle" class="label">User Message</text>
+  <text x="185" y="296" text-anchor="middle" class="body">현재 사용자의 질문과 요청</text>
+
+  <rect x="55" y="342" width="260" height="76" class="ai-box" />
+  <text x="185" y="370" text-anchor="middle" class="label">AI Message</text>
+  <text x="185" y="396" text-anchor="middle" class="body">이전 답변과 도구 호출 기록</text>
+
+  <path d="M315 174 C355 174, 368 210, 405 224" class="arrow-red" />
+  <path d="M315 280 C354 280, 370 266, 405 258" class="arrow" />
+  <path d="M315 380 C355 380, 370 314, 405 292" class="arrow" />
+
+  <rect x="405" y="125" width="270" height="300" class="context-box" />
+  <text x="540" y="158" text-anchor="middle" class="label">모델 입력 Context</text>
+  <text x="540" y="183" text-anchor="middle" class="mono">messages = [ ... ]</text>
+
+  <rect x="440" y="213" width="200" height="42" class="chip-red" />
+  <text x="540" y="240" text-anchor="middle" class="small">system: 절대 규칙</text>
+  <rect x="440" y="270" width="200" height="42" class="chip-blue" />
+  <text x="540" y="297" text-anchor="middle" class="small">user: 현재 요청</text>
+  <rect x="440" y="327" width="200" height="42" class="chip-green" />
+  <text x="540" y="354" text-anchor="middle" class="small">ai: 이전 응답</text>
+
+  <path d="M675 275 L746 275" class="arrow" />
+
+  <rect x="750" y="185" width="155" height="180" class="model-box" />
+  <text x="827.5" y="222" text-anchor="middle" class="label">LLM</text>
+  <circle cx="827.5" cy="275" r="40" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" />
+  <path d="M800 272 C808 248, 846 248, 855 272" fill="none" stroke="#0284c7" stroke-width="3" />
+  <path d="M800 281 C808 305, 846 305, 855 281" fill="none" stroke="#0284c7" stroke-width="3" />
+  <line x1="788" y1="275" x2="867" y2="275" stroke="#0284c7" stroke-width="3" />
+  <line x1="827.5" y1="236" x2="827.5" y2="314" stroke="#0284c7" stroke-width="3" />
+  <text x="827.5" y="336" text-anchor="middle" class="body">규칙 안에서</text>
+  <text x="827.5" y="354" text-anchor="middle" class="body">답변 생성</text>
+
+  <rect x="250" y="438" width="460" height="48" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" rx="10" />
+  <text x="480" y="458" text-anchor="middle" class="note">before_model 미들웨어는</text>
+  <text x="480" y="476" text-anchor="middle" class="note">messages 묶음이 모델에 들어가기 전에 검사하거나 수정합니다.</text>
+</svg>

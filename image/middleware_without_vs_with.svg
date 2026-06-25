@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">미들웨어 유무에 따른 에이전트 실행 흐름 비교</title>
+  <desc id="desc">미들웨어가 없을 때는 민감정보, 위험한 도구 실행, 반복 호출 문제가 그대로 흐르고, 미들웨어가 있으면 각 실행 지점에서 검사, 수정, 승인, 기록을 적용할 수 있음을 보여주는 그림</desc>
+  <defs>
+    <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#c2410c" />
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#0f766e" />
+    </marker>
+    <style>
+      .title { font: 700 24px sans-serif; fill: #111827; }
+      .section { font: 700 20px sans-serif; fill: #111827; }
+      .label { font: 600 16px sans-serif; fill: #1f2937; }
+      .small { font: 500 14px sans-serif; fill: #4b5563; }
+      .tiny { font: 500 13px sans-serif; fill: #4b5563; }
+      .bad-box { fill: #fff7ed; stroke: #fdba74; stroke-width: 2; rx: 12; }
+      .good-box { fill: #f0fdfa; stroke: #5eead4; stroke-width: 2; rx: 12; }
+      .base-box { fill: #ffffff; stroke: #d1d5db; stroke-width: 2; rx: 12; }
+      .bad-chip { fill: #fee2e2; stroke: #fca5a5; stroke-width: 1.5; rx: 10; }
+      .good-chip { fill: #dcfce7; stroke: #86efac; stroke-width: 1.5; rx: 10; }
+      .mid-chip { fill: #eef2ff; stroke: #a5b4fc; stroke-width: 1.5; rx: 10; }
+      .bad-line { stroke: #c2410c; stroke-width: 3; marker-end: url(#arrow-red); }
+      .good-line { stroke: #0f766e; stroke-width: 3; marker-end: url(#arrow-green); }
+      .divider { stroke: #e5e7eb; stroke-width: 2; stroke-dasharray: 6 8; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="960" height="520" fill="#ffffff" />
+  <text x="480" y="42" text-anchor="middle" class="title">Middleware는 실행 흐름 사이의 제어 지점입니다</text>
+  <text x="480" y="72" text-anchor="middle" class="small">프롬프트에 규칙을 더 쓰는 대신, 모델 호출과 Tool 실행 전후에 검사와 승인을 끼워 넣습니다.</text>
+
+  <line x1="480" y1="105" x2="480" y2="485" class="divider" />
+
+  <text x="240" y="120" text-anchor="middle" class="section">미들웨어 없음</text>
+  <text x="720" y="120" text-anchor="middle" class="section">미들웨어 있음</text>
+
+  <rect x="70" y="150" width="165" height="54" class="base-box" />
+  <text x="152.5" y="172" text-anchor="middle" class="label">사용자 요청</text>
+  <text x="152.5" y="192" text-anchor="middle" class="tiny">이메일, 삭제 요청 포함</text>
+
+  <line x1="235" y1="177" x2="295" y2="177" class="bad-line" />
+
+  <rect x="300" y="150" width="165" height="54" class="bad-box" />
+  <text x="382.5" y="172" text-anchor="middle" class="label">모델 호출</text>
+  <text x="382.5" y="192" text-anchor="middle" class="tiny">그대로 전달</text>
+
+  <line x1="152" y1="204" x2="152" y2="255" class="bad-line" />
+  <line x1="382" y1="204" x2="382" y2="255" class="bad-line" />
+
+  <rect x="70" y="260" width="165" height="54" class="bad-box" />
+  <text x="152.5" y="282" text-anchor="middle" class="label">Tool 실행</text>
+  <text x="152.5" y="302" text-anchor="middle" class="tiny">승인 없이 실행</text>
+
+  <rect x="300" y="260" width="165" height="54" class="bad-box" />
+  <text x="382.5" y="282" text-anchor="middle" class="label">최종 응답</text>
+  <text x="382.5" y="302" text-anchor="middle" class="tiny">사후 확인 어려움</text>
+
+  <rect x="70" y="350" width="185" height="38" class="bad-chip" />
+  <text x="162.5" y="374" text-anchor="middle" class="tiny">민감정보가 그대로 감</text>
+  <rect x="280" y="350" width="185" height="38" class="bad-chip" />
+  <text x="372.5" y="374" text-anchor="middle" class="tiny">위험 Tool이 바로 실행</text>
+  <rect x="70" y="405" width="185" height="38" class="bad-chip" />
+  <text x="162.5" y="429" text-anchor="middle" class="tiny">반복 호출 비용 증가</text>
+  <rect x="280" y="405" width="185" height="38" class="bad-chip" />
+  <text x="372.5" y="429" text-anchor="middle" class="tiny">어디서 막을지 흐림</text>
+
+  <rect x="540" y="150" width="130" height="54" class="base-box" />
+  <text x="605" y="172" text-anchor="middle" class="label">사용자 요청</text>
+  <text x="605" y="192" text-anchor="middle" class="tiny">입력 수신</text>
+
+  <line x1="670" y1="177" x2="705" y2="177" class="good-line" />
+
+  <rect x="710" y="150" width="185" height="54" class="good-box" />
+  <text x="802.5" y="172" text-anchor="middle" class="label">before_model</text>
+  <text x="802.5" y="192" text-anchor="middle" class="tiny">PII 마스킹, 권한 확인</text>
+
+  <line x1="802" y1="204" x2="802" y2="240" class="good-line" />
+
+  <rect x="710" y="245" width="185" height="54" class="base-box" />
+  <text x="802.5" y="267" text-anchor="middle" class="label">모델 호출</text>
+  <text x="802.5" y="287" text-anchor="middle" class="tiny">정리된 Context 사용</text>
+
+  <line x1="710" y1="272" x2="675" y2="272" class="good-line" />
+
+  <rect x="540" y="245" width="130" height="54" class="mid-chip" />
+  <text x="605" y="267" text-anchor="middle" class="label">after_model</text>
+  <text x="605" y="287" text-anchor="middle" class="tiny">Tool 호출 점검</text>
+
+  <line x1="605" y1="299" x2="605" y2="335" class="good-line" />
+
+  <rect x="540" y="340" width="130" height="54" class="good-box" />
+  <text x="605" y="362" text-anchor="middle" class="label">HITL 승인</text>
+  <text x="605" y="382" text-anchor="middle" class="tiny">위험 작업 보류</text>
+
+  <line x1="670" y1="367" x2="705" y2="367" class="good-line" />
+
+  <rect x="710" y="340" width="185" height="54" class="good-box" />
+  <text x="802.5" y="362" text-anchor="middle" class="label">wrap_tool_call</text>
+  <text x="802.5" y="382" text-anchor="middle" class="tiny">인자 검증, 실패 처리</text>
+
+  <rect x="540" y="430" width="165" height="38" class="good-chip" />
+  <text x="622.5" y="454" text-anchor="middle" class="tiny">안전성: 차단과 승인</text>
+  <rect x="730" y="430" width="165" height="38" class="good-chip" />
+  <text x="812.5" y="454" text-anchor="middle" class="tiny">비용/품질: 기록과 제한</text>
+</svg>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="280" viewBox="0 0 1040 280" role="img" aria-labelledby="title desc">
+  <title id="title">고객 문의 처리 에이전트 흐름</title>
+  <desc id="desc">사용자 요청, PII 처리, 주문 조회, 고객지원 티켓 생성 승인, 실행 재개, 후속 질문의 흐름을 나타낸다.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .box { fill: #f8fafc; stroke: #334155; stroke-width: 1.6; rx: 8; }
+      .pii { fill: #fdf2f8; stroke: #be185d; stroke-width: 1.8; rx: 8; }
+      .agent { fill: #e0f2fe; stroke: #0369a1; stroke-width: 1.8; rx: 8; }
+      .tool { fill: #ecfdf5; stroke: #047857; stroke-width: 1.8; rx: 8; }
+      .hitl { fill: #fff7ed; stroke: #c2410c; stroke-width: 1.8; rx: 8; }
+      .state { fill: #f5f3ff; stroke: #6d28d9; stroke-width: 1.8; rx: 8; }
+      .label { font-family: Arial, sans-serif; font-size: 16px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+      .small { font-family: Arial, sans-serif; font-size: 13px; fill: #334155; text-anchor: middle; }
+      .line { stroke: #334155; stroke-width: 1.7; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1040" height="280" fill="#ffffff"/>
+
+  <rect class="box" x="28" y="64" width="130" height="78"/>
+  <text class="label" x="93" y="96">사용자 요청</text>
+  <text class="small" x="93" y="120">PII 포함 문의</text>
+
+  <rect class="pii" x="190" y="64" width="150" height="78"/>
+  <text class="label" x="265" y="96">PIIMiddleware</text>
+  <text class="small" x="265" y="120">마스킹/삭제</text>
+
+  <rect class="agent" x="382" y="64" width="150" height="78"/>
+  <text class="label" x="457" y="96">support_agent</text>
+  <text class="small" x="457" y="120">Tool 선택</text>
+
+  <rect class="tool" x="584" y="34" width="166" height="72"/>
+  <text class="label" x="667" y="64">lookup_order</text>
+  <text class="small" x="667" y="88">주문 상태 조회</text>
+
+  <rect class="hitl" x="584" y="152" width="166" height="72"/>
+  <text class="label" x="667" y="182">승인 대기</text>
+  <text class="small" x="667" y="206">__interrupt__</text>
+
+  <rect class="tool" x="802" y="152" width="178" height="72"/>
+  <text class="label" x="891" y="182">고객지원 티켓</text>
+  <text class="small" x="891" y="206">approve 후 실행</text>
+
+  <rect class="state" x="802" y="34" width="178" height="72"/>
+  <text class="label" x="891" y="64">thread_id</text>
+  <text class="small" x="891" y="88">후속 질문 연결</text>
+
+  <path class="line" d="M158 103 H190"/>
+  <path class="line" d="M340 103 H382"/>
+  <path class="line" d="M532 92 C554 80 562 72 584 70"/>
+  <path class="line" d="M532 116 C560 140 560 176 584 188"/>
+  <path class="line" d="M750 188 H802"/>
+  <path class="line" d="M891 152 V106"/>
+  <path class="line" d="M802 70 C732 70 747 102 532 102"/>
+</svg>

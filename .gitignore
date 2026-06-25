@@ -1,0 +1,20 @@
+# Local secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Notebook
+.ipynb_checkpoints/
+
+# Local artifacts
+/backup/
+*.log
+
+
+# Vector DB / serialized indexes
+*.faiss
+*.pkl
+faiss_index*/
+my_faiss_index_test/

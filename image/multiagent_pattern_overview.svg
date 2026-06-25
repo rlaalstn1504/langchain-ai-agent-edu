@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+  <title id="title">멀티에이전트 패턴 개요</title>
+  <desc id="desc">단일 거대 에이전트와 역할별 멀티에이전트 구조를 비교하고, supervisor가 정책, 일정, 일반 응답 에이전트로 작업을 나누는 흐름을 보여준다.</desc>
+  <defs>
+    <marker id="arrow-gray" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b" />
+    </marker>
+    <marker id="arrow-teal" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#0f766e" />
+    </marker>
+    <style>
+      .title { font: 700 26px sans-serif; fill: #111827; }
+      .subtitle { font: 500 14px sans-serif; fill: #4b5563; }
+      .section { font: 700 20px sans-serif; fill: #111827; }
+      .label { font: 700 16px sans-serif; fill: #1f2937; }
+      .body { font: 500 14px sans-serif; fill: #374151; }
+      .tiny { font: 500 12.5px sans-serif; fill: #4b5563; }
+      .hint { font: 700 13px sans-serif; fill: #0f766e; }
+      .panel-left { fill: #fff7ed; stroke: #fdba74; stroke-width: 2; rx: 12; }
+      .panel-right { fill: #f0fdfa; stroke: #5eead4; stroke-width: 2; rx: 12; }
+      .box { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 10; }
+      .agent { fill: #eef2ff; stroke: #a5b4fc; stroke-width: 2; rx: 10; }
+      .tool { fill: #ecfdf5; stroke: #86efac; stroke-width: 1.5; rx: 8; }
+      .warn { fill: #fee2e2; stroke: #fca5a5; stroke-width: 1.5; rx: 8; }
+      .chip { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.5; rx: 12; }
+      .line-gray { stroke: #64748b; stroke-width: 2.4; fill: none; marker-end: url(#arrow-gray); }
+      .line-teal { stroke: #0f766e; stroke-width: 2.6; fill: none; marker-end: url(#arrow-teal); }
+      .divider { stroke: #e5e7eb; stroke-width: 2; stroke-dasharray: 7 8; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="960" height="560" fill="#ffffff" />
+  <text x="480" y="38" text-anchor="middle" class="title">멀티에이전트는 역할을 나누는 구조입니다</text>
+  <text x="480" y="64" text-anchor="middle" class="subtitle">한 에이전트에 모든 책임을 넣지 않고, 질문 성격에 따라 전문 에이전트와 Tool을 나눕니다.</text>
+
+  <line x1="480" y1="92" x2="480" y2="520" class="divider" />
+
+  <rect x="44" y="104" width="392" height="392" class="panel-left" />
+  <text x="240" y="136" text-anchor="middle" class="section">단일 거대 에이전트</text>
+  <text x="240" y="160" text-anchor="middle" class="subtitle">모든 역할과 Tool이 한곳에 모임</text>
+
+  <rect x="86" y="195" width="120" height="52" class="box" />
+  <text x="146" y="218" text-anchor="middle" class="label">사용자 질문</text>
+  <text x="146" y="238" text-anchor="middle" class="tiny">환불 + 배송 + 쿠폰</text>
+
+  <path d="M206 221 C232 221 238 221 264 221" class="line-gray" />
+
+  <rect x="270" y="174" width="124" height="94" class="agent" />
+  <text x="332" y="201" text-anchor="middle" class="label">하나의 Agent</text>
+  <text x="332" y="224" text-anchor="middle" class="tiny">정책 / 일정 / 요약</text>
+  <text x="332" y="244" text-anchor="middle" class="tiny">승인 / 검색까지 담당</text>
+
+  <rect x="74" y="305" width="88" height="38" class="tool" />
+  <text x="118" y="329" text-anchor="middle" class="tiny">정책 Tool</text>
+  <rect x="172" y="305" width="88" height="38" class="tool" />
+  <text x="216" y="329" text-anchor="middle" class="tiny">일정 Tool</text>
+  <rect x="270" y="305" width="88" height="38" class="tool" />
+  <text x="314" y="329" text-anchor="middle" class="tiny">검색 Tool</text>
+  <rect x="172" y="356" width="88" height="38" class="tool" />
+  <text x="216" y="380" text-anchor="middle" class="tiny">메일 Tool</text>
+  <path d="M332 268 C314 292 296 297 244 305" class="line-gray" />
+  <path d="M332 268 C335 288 335 293 321 305" class="line-gray" />
+  <path d="M332 268 C264 282 158 288 120 305" class="line-gray" />
+
+  <rect x="86" y="425" width="132" height="42" class="warn" />
+  <text x="152" y="442" text-anchor="middle" class="tiny">Context가 커짐</text>
+  <text x="152" y="459" text-anchor="middle" class="tiny">중요 정보가 밀림</text>
+  <rect x="244" y="425" width="132" height="42" class="warn" />
+  <text x="310" y="442" text-anchor="middle" class="tiny">Tool 선택 기준이</text>
+  <text x="310" y="459" text-anchor="middle" class="tiny">흐려지기 쉬움</text>
+
+  <rect x="524" y="104" width="392" height="392" class="panel-right" />
+  <text x="720" y="136" text-anchor="middle" class="section">역할별 멀티에이전트</text>
+  <text x="720" y="160" text-anchor="middle" class="subtitle">supervisor가 질문을 보고 전문 역할로 나눔</text>
+
+  <rect x="560" y="198" width="112" height="48" class="box" />
+  <text x="616" y="221" text-anchor="middle" class="label">사용자 질문</text>
+  <text x="616" y="239" text-anchor="middle" class="tiny">무엇이 필요한가?</text>
+
+  <path d="M672 222 C695 222 699 222 720 222" class="line-teal" />
+
+  <rect x="724" y="184" width="140" height="76" class="agent" />
+  <text x="794" y="210" text-anchor="middle" class="label">supervisor</text>
+  <text x="794" y="232" text-anchor="middle" class="tiny">질문 분류</text>
+  <text x="794" y="250" text-anchor="middle" class="tiny">전문 Agent 호출</text>
+
+  <rect x="556" y="306" width="110" height="60" class="box" />
+  <text x="611" y="329" text-anchor="middle" class="label">policy_agent</text>
+  <text x="611" y="350" text-anchor="middle" class="tiny">환불 / 교환 / 쿠폰</text>
+
+  <rect x="684" y="306" width="122" height="60" class="box" />
+  <text x="745" y="329" text-anchor="middle" class="label">schedule_agent</text>
+  <text x="745" y="350" text-anchor="middle" class="tiny">배송 / 일정</text>
+
+  <rect x="820" y="306" width="70" height="60" class="box" />
+  <text x="855" y="329" text-anchor="middle" class="label">writer</text>
+  <text x="855" y="350" text-anchor="middle" class="tiny">응답 정리</text>
+
+  <path d="M770 260 C735 286 677 294 621 306" class="line-teal" />
+  <path d="M794 260 C784 284 764 294 746 306" class="line-teal" />
+  <path d="M830 260 C850 284 855 294 855 306" class="line-teal" />
+
+  <rect x="566" y="390" width="92" height="36" class="tool" />
+  <text x="612" y="412" text-anchor="middle" class="tiny">search_policy</text>
+  <rect x="690" y="390" width="110" height="36" class="tool" />
+  <text x="745" y="412" text-anchor="middle" class="tiny">lookup_schedule</text>
+  <path d="M611 366 C611 376 611 382 611 390" class="line-teal" />
+  <path d="M745 366 C745 376 745 382 745 390" class="line-teal" />
+
+  <rect x="544" y="452" width="104" height="32" class="chip" />
+  <text x="596" y="473" text-anchor="middle" class="hint">Router</text>
+  <rect x="666" y="452" width="104" height="32" class="chip" />
+  <text x="718" y="473" text-anchor="middle" class="hint">Subagents</text>
+  <rect x="788" y="452" width="104" height="32" class="chip" />
+  <text x="840" y="473" text-anchor="middle" class="hint">Handoff</text>
+
+  <text x="720" y="524" text-anchor="middle" class="subtitle">핵심: 역할과 Context를 분리해 각 Agent가 자기 일에 집중하게 만듭니다.</text>
+</svg>

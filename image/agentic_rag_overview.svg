@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="660" viewBox="0 0 960 660" role="img" aria-labelledby="title desc">
+  <title id="title">RAG structure comparison</title>
+  <desc id="desc">Compares basic RAG, a single agent with a document search tool, and Agentic RAG implemented with LangGraph.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#334155"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-12%" width="120%" height="135%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+      .lane { font-family: Arial, sans-serif; font-size: 18px; font-weight: 700; fill: #0f172a; }
+      .label { font-family: Arial, sans-serif; font-size: 16px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+      .small { font-family: Arial, sans-serif; font-size: 13px; fill: #475569; text-anchor: middle; }
+      .note { font-family: Arial, sans-serif; font-size: 14px; fill: #334155; text-anchor: middle; }
+      .line { stroke: #334155; stroke-width: 2.1; fill: none; marker-end: url(#arrow); }
+      .loop { stroke: #7c3aed; stroke-width: 2.1; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="960" height="660" rx="20" fill="#f8fafc"/>
+  <text class="title" x="480" y="44">RAG 구조가 확장되는 세 단계</text>
+
+  <rect x="32" y="72" width="896" height="140" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.6"/>
+  <text class="lane" x="58" y="104">1. Naive RAG(기본 RAG): 검색과 생성이 고정된 흐름</text>
+
+  <rect x="64" y="128" width="130" height="58" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="label" x="129" y="153">사용자 질문</text>
+  <text class="small" x="129" y="174">질문 입력</text>
+
+  <rect x="264" y="128" width="150" height="58" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="label" x="339" y="153">벡터 저장소 검색</text>
+  <text class="small" x="339" y="174">직접 검색</text>
+
+  <rect x="484" y="128" width="150" height="58" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="label" x="559" y="153">답변 생성</text>
+  <text class="small" x="559" y="174">검색 문서 사용</text>
+
+  <rect x="704" y="128" width="150" height="58" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="label" x="779" y="153">최종 답변</text>
+  <text class="small" x="779" y="174">한 번에 종료</text>
+
+  <path class="line" d="M194 157 H254"/>
+  <path class="line" d="M414 157 H474"/>
+  <path class="line" d="M634 157 H694"/>
+
+  <rect x="32" y="240" width="896" height="156" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.6"/>
+  <text class="lane" x="58" y="272">2. 문서 검색 Tool을 붙인 단일 에이전트: Tool 호출 판단을 에이전트가 담당</text>
+
+  <rect x="56" y="304" width="118" height="62" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="label" x="115" y="329">사용자 질문</text>
+  <text class="small" x="115" y="350">질문 입력</text>
+
+  <rect x="226" y="294" width="146" height="82" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" filter="url(#shadow)"/>
+  <text class="label" x="299" y="324">단일 에이전트</text>
+  <text class="small" x="299" y="348">검색 Tool을 쓸지</text>
+  <text class="small" x="299" y="366">모델이 판단</text>
+
+  <rect x="430" y="294" width="156" height="82" rx="12" fill="#ecfdf5" stroke="#059669" stroke-width="2" filter="url(#shadow)"/>
+  <text class="label" x="508" y="324">문서 검색 Tool</text>
+  <text class="small" x="508" y="348">retrieve_docs</text>
+  <text class="small" x="508" y="366">벡터 저장소 조회</text>
+
+  <rect x="646" y="304" width="122" height="62" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="label" x="707" y="329">답변 생성</text>
+  <text class="small" x="707" y="350">Tool 결과 사용</text>
+
+  <rect x="820" y="304" width="82" height="62" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="label" x="861" y="329">답변</text>
+  <text class="small" x="861" y="350">종료</text>
+
+  <path class="line" d="M174 335 H216"/>
+  <path class="line" d="M372 335 H420"/>
+  <path class="line" d="M586 335 H636"/>
+  <path class="line" d="M768 335 H810"/>
+
+  <rect x="32" y="424" width="896" height="180" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.6"/>
+  <text class="lane" x="58" y="456">3. LangGraph로 구현한 Agentic RAG: 검색 품질과 종료 조건을 단계로 분리</text>
+
+  <rect x="52" y="492" width="112" height="58" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="label" x="108" y="517">질문</text>
+  <text class="small" x="108" y="538">입력</text>
+
+  <rect x="208" y="492" width="128" height="58" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="label" x="272" y="517">검색</text>
+  <text class="small" x="272" y="538">문서 조회</text>
+
+  <rect x="380" y="492" width="128" height="58" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="label" x="444" y="517">평가</text>
+  <text class="small" x="444" y="538">관련성 확인</text>
+
+  <path d="M610 478 L670 521 L610 564 L550 521 Z" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="label" x="610" y="515">충분?</text>
+  <text class="small" x="610" y="537">분기</text>
+
+  <rect x="724" y="492" width="128" height="58" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="label" x="788" y="517">답변 생성</text>
+  <text class="small" x="788" y="538">근거 반영</text>
+
+  <rect x="380" y="582" width="128" height="46" rx="10" fill="#fdf2f8" stroke="#db2777" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="label" x="444" y="611">검색어 재작성</text>
+
+  <path class="line" d="M164 521 H198"/>
+  <path class="line" d="M336 521 H370"/>
+  <path class="line" d="M508 521 H540"/>
+  <path class="line" d="M670 521 H714"/>
+  <text class="small" x="694" y="512">예</text>
+
+  <path class="loop" d="M584 552 C548 585 525 605 518 605"/>
+  <text class="small" x="552" y="590">아니오</text>
+  <path class="loop" d="M380 605 C302 612 272 586 272 560"/>
+  <text class="small" x="312" y="627">재검색</text>
+
+  <text class="note" x="480" y="646">핵심: 단순한 검색-생성 흐름에서 시작해, Tool 호출 판단과 그래프 기반 흐름 제어로 확장한다.</text>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">Limitations of using create_agent alone for complex workflows</title>
+  <desc id="desc">Shows approval, retry, and reject branching being forced into one create_agent prompt, leading to flow, state, and debugging problems.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#334155"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-12%" width="120%" height="135%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 25px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+      .label { font-family: Arial, sans-serif; font-size: 16px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+      .small { font-family: Arial, sans-serif; font-size: 13px; fill: #475569; text-anchor: middle; }
+      .tiny { font-family: Arial, sans-serif; font-size: 12px; fill: #64748b; text-anchor: middle; }
+      .issue { font-family: Arial, sans-serif; font-size: 15px; font-weight: 700; fill: #7f1d1d; text-anchor: middle; }
+      .note { font-family: Arial, sans-serif; font-size: 14px; fill: #334155; text-anchor: middle; }
+      .line { stroke: #334155; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+      .soft { stroke: #64748b; stroke-width: 1.9; stroke-dasharray: 6 5; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="960" height="520" rx="20" fill="#f8fafc"/>
+  <text class="title" x="480" y="44">복잡한 흐름을 create_agent 하나에 몰아넣을 때</text>
+
+  <rect x="52" y="108" width="176" height="76" rx="14" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="label" x="140" y="137">승인 단계</text>
+  <text class="small" x="140" y="160">사람 확인 후 실행</text>
+
+  <rect x="52" y="222" width="176" height="76" rx="14" fill="#fdf2f8" stroke="#db2777" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="label" x="140" y="251">실패 시 재시도</text>
+  <text class="small" x="140" y="274">횟수 제한 필요</text>
+
+  <rect x="52" y="336" width="176" height="76" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="label" x="140" y="365">거절 시 분기</text>
+  <text class="small" x="140" y="388">다른 경로로 이동</text>
+
+  <rect x="336" y="120" width="286" height="292" rx="20" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.4" filter="url(#shadow)"/>
+  <text class="label" x="479" y="154">create_agent 하나</text>
+  <text class="small" x="479" y="180">모델 + Tool + 긴 system_prompt</text>
+
+  <rect x="376" y="214" width="206" height="120" rx="14" fill="#ffffff" stroke="#bae6fd" stroke-width="1.6"/>
+  <text class="label" x="479" y="242">프롬프트 안에</text>
+  <text class="small" x="479" y="269">승인 규칙</text>
+  <text class="small" x="479" y="291">재시도 횟수</text>
+  <text class="small" x="479" y="313">거절 분기까지 설명</text>
+
+  <text class="tiny" x="479" y="374">상태와 경로가 메시지 안에 묻히기 쉬움</text>
+
+  <path class="line" d="M228 146 C268 146 292 178 326 210"/>
+  <path class="line" d="M228 260 H326"/>
+  <path class="line" d="M228 374 C268 374 292 342 326 312"/>
+
+  <rect x="724" y="98" width="180" height="86" rx="14" fill="#fee2e2" stroke="#dc2626" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="issue" x="814" y="126">흐름 제어 어려움</text>
+  <text class="small" x="814" y="151">어떤 분기로 갔는지</text>
+  <text class="small" x="814" y="170">코드에서 고정하기 어려움</text>
+
+  <rect x="724" y="218" width="180" height="86" rx="14" fill="#fee2e2" stroke="#dc2626" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="issue" x="814" y="246">상태 관리 어려움</text>
+  <text class="small" x="814" y="271">승인 여부, 재시도 횟수를</text>
+  <text class="small" x="814" y="290">메시지에 의존하게 됨</text>
+
+  <rect x="724" y="338" width="180" height="86" rx="14" fill="#fee2e2" stroke="#dc2626" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="issue" x="814" y="366">디버깅 어려움</text>
+  <text class="small" x="814" y="391">프롬프트, Tool, 경로 문제를</text>
+  <text class="small" x="814" y="410">분리해서 보기 어려움</text>
+
+  <path class="soft" d="M622 200 C666 170 686 144 714 140"/>
+  <path class="soft" d="M622 266 H714"/>
+  <path class="soft" d="M622 332 C666 362 686 384 714 384"/>
+
+  <rect x="100" y="462" width="760" height="34" rx="12" fill="#ecfdf5" stroke="#bbf7d0" stroke-width="1.4"/>
+  <text class="note" x="480" y="484">정리: Agent는 행동 선택에 적합하고, 승인/재시도/분기 흐름은 Graph로 드러내는 편이 안전하다.</text>
+</svg>

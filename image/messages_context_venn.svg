@@ -1,0 +1,49 @@
+<svg width="760" height="390" viewBox="0 0 760 390" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Prompt, Messages, and Context</title>
+  <desc id="desc">A diagram showing context as the whole input range, messages as role and content pairs, and prompts as instruction text inside message content.</desc>
+  <defs>
+    <style>
+      .title { font: 700 26px sans-serif; fill: #18496a; }
+      .label { font: 700 18px sans-serif; fill: #111827; }
+      .small { font: 600 14px sans-serif; fill: #334155; }
+      .tiny { font: 500 13px sans-serif; fill: #475569; }
+      .context { fill: #e8f3ff; stroke: #2f6f9f; stroke-width: 3; rx: 16; }
+      .messages { fill: #fff7df; stroke: #b57900; stroke-width: 2.5; rx: 12; }
+      .system { fill: #fee2e2; stroke: #ef4444; stroke-width: 1.5; rx: 8; }
+      .user { fill: #dbeafe; stroke: #60a5fa; stroke-width: 1.5; rx: 8; }
+      .assistant { fill: #dcfce7; stroke: #22c55e; stroke-width: 1.5; rx: 8; }
+      .other { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.5; rx: 10; }
+    </style>
+  </defs>
+
+  <rect width="760" height="390" fill="#ffffff"/>
+  <rect x="70" y="30" width="620" height="310" class="context"/>
+  <text x="380" y="66" text-anchor="middle" class="title">Context</text>
+  <text x="380" y="91" text-anchor="middle" class="small">모델이 이번 호출에서 참고하는 전체 입력 범위</text>
+
+  <rect x="115" y="115" width="390" height="170" class="messages"/>
+  <text x="310" y="145" text-anchor="middle" class="label">Messages</text>
+  <text x="310" y="167" text-anchor="middle" class="tiny">role + content로 나누어 담는 형식</text>
+
+  <rect x="145" y="185" width="330" height="26" class="system"/>
+  <text x="205" y="203" text-anchor="middle" class="tiny">system</text>
+  <text x="335" y="203" text-anchor="middle" class="tiny">시스템 프롬프트</text>
+
+  <rect x="145" y="220" width="330" height="26" class="user"/>
+  <text x="205" y="238" text-anchor="middle" class="tiny">user</text>
+  <text x="335" y="238" text-anchor="middle" class="tiny">사용자 요청 / 프롬프트</text>
+
+  <rect x="145" y="255" width="330" height="26" class="assistant"/>
+  <text x="205" y="273" text-anchor="middle" class="tiny">assistant</text>
+  <text x="335" y="273" text-anchor="middle" class="tiny">이전 AI 응답 / 예시</text>
+
+  <rect x="525" y="135" width="130" height="55" class="other"/>
+  <text x="590" y="158" text-anchor="middle" class="small">검색 문서</text>
+  <text x="590" y="178" text-anchor="middle" class="tiny">RAG 결과</text>
+
+  <rect x="525" y="215" width="130" height="55" class="other"/>
+  <text x="590" y="238" text-anchor="middle" class="small">Tool 결과</text>
+  <text x="590" y="258" text-anchor="middle" class="tiny">실행 응답</text>
+
+  <text x="380" y="367" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="700" fill="#202124">Context = Messages + 참고 정보</text>
+</svg>

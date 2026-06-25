@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="430" viewBox="0 0 960 430" role="img" aria-labelledby="title desc">
+  <title id="title">Agentic RAG routing criteria</title>
+  <desc id="desc">The router checks whether a question needs current web information, internal document evidence, or general knowledge.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#334155"/>
+    </marker>
+    <filter id="shadow" x="-8%" y="-10%" width="116%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 25px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+      .label { font-family: Arial, sans-serif; font-size: 18px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+      .small { font-family: Arial, sans-serif; font-size: 14px; fill: #475569; text-anchor: middle; }
+      .tiny { font-family: Arial, sans-serif; font-size: 12px; fill: #64748b; text-anchor: middle; }
+      .line { stroke: #334155; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="960" height="430" rx="20" fill="#ffffff"/>
+  <text class="title" x="480" y="45">라우터는 질문의 단서를 보고 답변 경로를 고른다</text>
+
+  <rect x="46" y="160" width="170" height="86" rx="14" fill="#f8fafc" stroke="#334155" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="label" x="131" y="194">사용자 질문</text>
+  <text class="small" x="131" y="221">무엇을 묻는가?</text>
+
+  <rect x="286" y="140" width="190" height="126" rx="16" fill="#e0f2fe" stroke="#0369a1" stroke-width="2" filter="url(#shadow)"/>
+  <text class="label" x="381" y="178">Router</text>
+  <text class="small" x="381" y="205">질문 안의 단서를 확인</text>
+  <text class="tiny" x="381" y="230">최신성 / 내부 근거 / 일반 개념</text>
+
+  <rect x="560" y="78" width="220" height="86" rx="14" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.9" filter="url(#shadow)"/>
+  <text class="label" x="670" y="110">Tavily 웹검색</text>
+  <text class="small" x="670" y="135">오늘, 현재, 최신, 뉴스</text>
+  <text class="tiny" x="670" y="155">시간에 따라 답이 바뀌면</text>
+
+  <rect x="560" y="182" width="220" height="86" rx="14" fill="#dcfce7" stroke="#15803d" stroke-width="1.9" filter="url(#shadow)"/>
+  <text class="label" x="670" y="214">벡터DB 검색</text>
+  <text class="small" x="670" y="239">사내 문서, 정책, 매뉴얼</text>
+  <text class="tiny" x="670" y="259">내부 근거가 필요하면</text>
+
+  <rect x="560" y="286" width="220" height="86" rx="14" fill="#fef9c3" stroke="#a16207" stroke-width="1.9" filter="url(#shadow)"/>
+  <text class="label" x="670" y="318">일반 지식 답변</text>
+  <text class="small" x="670" y="343">개념 설명, 공개 상식</text>
+  <text class="tiny" x="670" y="363">검색이 필요 없으면</text>
+
+  <rect x="838" y="160" width="86" height="86" rx="14" fill="#f1f5f9" stroke="#475569" stroke-width="1.8" filter="url(#shadow)"/>
+  <text class="label" x="881" y="195">답변</text>
+  <text class="small" x="881" y="221">생성</text>
+
+  <path class="line" d="M216 203 H276"/>
+  <path class="line" d="M476 178 C506 136 522 121 560 121"/>
+  <path class="line" d="M476 203 H560"/>
+  <path class="line" d="M476 228 C506 274 522 329 560 329"/>
+  <path class="line" d="M780 121 C815 135 828 166 838 185"/>
+  <path class="line" d="M780 225 H838"/>
+  <path class="line" d="M780 329 C815 310 828 250 838 222"/>
+
+</svg>

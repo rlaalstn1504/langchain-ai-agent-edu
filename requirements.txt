@@ -1,0 +1,11 @@
+langchain
+langchain-openai
+openai
+langgraph
+langfuse
+langchain-text-splitters
+python-dotenv
+pydantic
+typing-extensions
+ipykernel
+tavily-python

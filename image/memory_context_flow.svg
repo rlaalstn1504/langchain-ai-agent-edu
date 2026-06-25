@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">메모리가 다음 호출의 컨텍스트로 들어오는 흐름</title>
+  <desc id="desc">같은 thread_id를 사용하면 checkpointer가 이전 messages를 불러와 새 사용자 메시지와 합쳐 다음 호출의 context로 전달한다. 다른 thread_id를 사용하면 이전 대화가 포함되지 않는다.</desc>
+  <defs>
+    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,8 L11,4 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,8 L11,4 z" fill="#0f766e"/>
+    </marker>
+    <marker id="arrow-gray" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,8 L11,4 z" fill="#64748b"/>
+    </marker>
+    <style>
+      .title { font: 700 25px sans-serif; fill: #111827; }
+      .subtitle { font: 500 15px sans-serif; fill: #4b5563; }
+      .box-title { font: 700 17px sans-serif; fill: #111827; }
+      .body { font: 500 14px sans-serif; fill: #334155; }
+      .small { font: 600 13px sans-serif; fill: #475569; }
+      .tiny { font: 500 12px sans-serif; fill: #64748b; }
+      .request { fill: #eff6ff; stroke: #60a5fa; stroke-width: 2; rx: 12; }
+      .context { fill: #fff7ed; stroke: #f97316; stroke-width: 2; rx: 12; }
+      .store { fill: #ecfdf5; stroke: #10b981; stroke-width: 2.5; rx: 14; }
+      .agent { fill: #f8fafc; stroke: #475569; stroke-width: 2; rx: 12; }
+      .miss { fill: #f1f5f9; stroke: #94a3b8; stroke-width: 1.8; rx: 12; stroke-dasharray: 6 5; }
+      .chip { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.2; rx: 8; }
+      .memory-chip { fill: #ecfdf5; stroke: #10b981; stroke-width: 1.6; rx: 8; }
+      .new-chip { fill: #eff6ff; stroke: #60a5fa; stroke-width: 1.4; rx: 8; }
+      .line-blue { stroke: #2563eb; stroke-width: 3; fill: none; marker-end: url(#arrow-blue); }
+      .line-green { stroke: #0f766e; stroke-width: 3; fill: none; marker-end: url(#arrow-green); }
+      .line-gray { stroke: #64748b; stroke-width: 2.5; fill: none; marker-end: url(#arrow-gray); stroke-dasharray: 7 6; }
+    </style>
+  </defs>
+
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="38" text-anchor="middle" class="title">메모리는 다음 호출의 Context로 다시 들어옵니다</text>
+  <text x="480" y="64" text-anchor="middle" class="subtitle">저장된 대화를 모델이 따로 읽는 것이 아니라, 같은 thread_id의 messages를 불러와 새 요청과 합칩니다.</text>
+
+  <rect x="45" y="105" width="190" height="110" class="request"/>
+  <text x="140" y="132" text-anchor="middle" class="box-title">첫 번째 요청</text>
+  <rect x="68" y="150" width="144" height="28" class="chip"/>
+  <text x="140" y="169" text-anchor="middle" class="small">thread_id: student-1</text>
+  <text x="140" y="196" text-anchor="middle" class="body">"나는 개발자야"</text>
+
+  <path d="M235 160 L292 160" class="line-blue"/>
+
+  <rect x="300" y="105" width="170" height="110" class="agent"/>
+  <text x="385" y="136" text-anchor="middle" class="box-title">agent 실행</text>
+  <text x="385" y="163" text-anchor="middle" class="body">현재 messages 처리</text>
+  <text x="385" y="188" text-anchor="middle" class="tiny">응답 생성 후 상태 저장</text>
+
+  <path d="M470 160 C520 160, 520 113, 575 113" class="line-green"/>
+
+  <rect x="585" y="92" width="250" height="136" class="store"/>
+  <text x="710" y="122" text-anchor="middle" class="box-title">checkpointer</text>
+  <text x="710" y="145" text-anchor="middle" class="body">thread_id별 대화 상태 저장</text>
+  <rect x="615" y="164" width="190" height="34" class="chip"/>
+  <text x="710" y="185" text-anchor="middle" class="small">student-1: 이전 messages</text>
+  <text x="710" y="215" text-anchor="middle" class="tiny">메모리 저장소 역할</text>
+
+  <rect x="45" y="300" width="190" height="120" class="request"/>
+  <text x="140" y="327" text-anchor="middle" class="box-title">두 번째 요청</text>
+  <rect x="68" y="345" width="144" height="28" class="chip"/>
+  <text x="140" y="364" text-anchor="middle" class="small">thread_id: student-1</text>
+  <text x="140" y="391" text-anchor="middle" class="body">"내 직업이 뭐였지?"</text>
+
+  <path d="M235 360 L292 360" class="line-blue"/>
+
+  <rect x="300" y="290" width="270" height="150" class="context"/>
+  <text x="435" y="320" text-anchor="middle" class="box-title">다음 호출의 Context</text>
+  <rect x="325" y="337" width="220" height="30" class="memory-chip"/>
+  <text x="435" y="356" text-anchor="middle" class="small">메모리: 이전 messages</text>
+  <rect x="325" y="374" width="220" height="30" class="new-chip"/>
+  <text x="435" y="393" text-anchor="middle" class="small">새 요청: user message</text>
+  <text x="435" y="423" text-anchor="middle" class="body">둘 다 모델 입력으로 전달됨</text>
+
+  <path d="M615 198 C590 245, 588 315, 548 352" class="line-green"/>
+  <text x="604" y="272" text-anchor="middle" class="small" fill="#0f766e">메모리 복원</text>
+  <text x="604" y="290" text-anchor="middle" class="small" fill="#0f766e">Context에 추가</text>
+
+  <path d="M570 365 L647 365" class="line-blue"/>
+
+  <rect x="655" y="300" width="220" height="120" class="agent"/>
+  <text x="765" y="331" text-anchor="middle" class="box-title">답변 가능</text>
+  <text x="765" y="360" text-anchor="middle" class="body">이전 소개를 포함해</text>
+  <text x="765" y="383" text-anchor="middle" class="body">"개발자"라고 답함</text>
+
+  <rect x="610" y="430" width="265" height="48" class="miss"/>
+  <line x1="626" y1="447" x2="642" y2="463" stroke="#94a3b8" stroke-width="2.2"/>
+  <line x1="642" y1="447" x2="626" y2="463" stroke="#94a3b8" stroke-width="2.2"/>
+  <text x="752" y="451" text-anchor="middle" class="small">다른 thread_id 또는 저장 상태 없음</text>
+  <text x="752" y="470" text-anchor="middle" class="tiny">이전 messages가 Context에 들어오지 않음</text>
+
+  <text x="480" y="506" text-anchor="middle" class="small">핵심: 같은 thread_id를 써야 이전 대화가 다음 요청의 Context에 포함됩니다.</text>
+</svg>

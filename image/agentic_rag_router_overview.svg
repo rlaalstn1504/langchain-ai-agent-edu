@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Agentic RAG router overview</title>
+  <desc id="desc">A question is routed to general answer, vector database search, or Tavily web search, then each path returns an answer.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .box { fill: #ffffff; stroke: #334155; stroke-width: 2; rx: 8; }
+      .router { fill: #e0f2fe; stroke: #0369a1; }
+      .general { fill: #fef9c3; stroke: #a16207; }
+      .vector { fill: #dcfce7; stroke: #15803d; }
+      .web { fill: #fee2e2; stroke: #b91c1c; }
+      .answer { fill: #f1f5f9; stroke: #475569; }
+      .text { font-family: Arial, sans-serif; fill: #0f172a; font-size: 20px; font-weight: 700; text-anchor: middle; }
+      .sub { font-family: Arial, sans-serif; fill: #475569; font-size: 15px; text-anchor: middle; }
+      .line { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="960" height="420" fill="#ffffff"/>
+
+  <rect class="box" x="40" y="160" width="150" height="80"/>
+  <text class="text" x="115" y="193">사용자 질문</text>
+  <text class="sub" x="115" y="218">무엇을 물었나</text>
+
+  <rect class="box router" x="270" y="150" width="170" height="100"/>
+  <text class="text" x="355" y="190">Router</text>
+  <text class="sub" x="355" y="217">답변 경로 선택</text>
+
+  <rect class="box general" x="540" y="40" width="200" height="84"/>
+  <text class="text" x="640" y="75">일반 지식</text>
+  <text class="sub" x="640" y="101">상식, 개념 설명</text>
+
+  <rect class="box vector" x="540" y="168" width="200" height="84"/>
+  <text class="text" x="640" y="203">벡터DB 검색</text>
+  <text class="sub" x="640" y="229">사내 문서, 매뉴얼</text>
+
+  <rect class="box web" x="540" y="296" width="200" height="84"/>
+  <text class="text" x="640" y="331">Tavily 웹검색</text>
+  <text class="sub" x="640" y="357">날씨, 주가, 최신 정보</text>
+
+  <rect class="box answer" x="820" y="160" width="110" height="80"/>
+  <text class="text" x="875" y="193">답변</text>
+  <text class="sub" x="875" y="218">근거 포함</text>
+
+  <path class="line" d="M 190 200 L 270 200"/>
+  <path class="line" d="M 440 175 C 485 120, 485 82, 540 82"/>
+  <path class="line" d="M 440 205 L 540 210"/>
+  <path class="line" d="M 440 225 C 485 292, 485 338, 540 338"/>
+  <path class="line" d="M 740 82 C 785 105, 795 158, 820 185"/>
+  <path class="line" d="M 740 210 L 820 200"/>
+  <path class="line" d="M 740 338 C 785 312, 795 242, 820 215"/>
+</svg>
